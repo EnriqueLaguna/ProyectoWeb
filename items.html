@@ -88,98 +88,206 @@
     </style>
 </head>
 <body>
-    <div class="modal fade" id="loginModal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Iniciar Sesión</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+  <div class="modal fade" id="createItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Almacenar un Item</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="inputItemName">Nombre del objeto</label>
+              <input type="text" class="form-control" id="inputItemName" placeholder="Espada de Diamante">
             </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Correo</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                      <small id="emailHelp" class="form-text text-muted">Tu correo será tan seguro como un cofre de Ender</small>
+            <div class="form-group">
+              <label for="inputItemName">Imagen del objeto</label>
+              <input type="text" class="form-control" id="inputItemImage" placeholder="url">
+            </div>
+            <div class="form-group">
+              <label for="inputReceta">Receta</label>
+              <input type="text" class="form-control" id="inputReceta" placeholder="url">
+            </div>
+            <div class="form-group">
+              <label for="inputDescripcion">Descripción</label>
+              <input type="text" class="form-control" id="inputDescripcion" placeholder="La espada es la mejor xd">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputDurabilidad">Durabildiad</label>
+                <input type="number" class="form-control" id="inputDurability" placeholder="-1 si no tiene / 1 si si tiene">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Almacenar Objeto</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="modal fade" id="loginModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Iniciar Sesión</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Correo</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">Tu correo será tan seguro como un cofre de Ender</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <p>¿No tienes cuenta? <a href="" data-toggle="modal" data-target="#registrerModal" data-dismiss="modal">!Regístrate aquí!</a></p>
+                </form>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Iniciar sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Just an image -->
+
+  <div class="modal fade" id="registrerModal" tabindex="-1" role="dialog" aria-labelledby="createFormModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createFormModal">Registrarse</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            
+              <form method="POST" id="createUserForm">
+                  <div class="row">
+                    <div class="col-6">
+                      <input type="text" name="nombre" id="" class="form-control" placeholder="Nombre o nombres"
+                        aria-describedby="helpId" required>
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Contraseña</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div class="col-6">
+                      <input type="text" name="apellidos" id="" class="form-control" placeholder="Apellidos" aria-describedby="helpId"
+                        required>
                     </div>
-                    <p>¿No tienes cuenta? <a href="" data-toggle="modal" data-target="#registrerModal" data-dismiss="modal">!Regístrate aquí!</a></p>
-                  </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Iniciar sesión</button>
-            </div>
+                  </div>
+                  <input type="email" name="email" id="" class="form-control mt-3" placeholder="Correo"
+                    aria-describedby="helpId" required>
+                  <input type="password" name="password1" id="password1" class="form-control mt-3" placeholder="Contraseña"
+                    aria-describedby="helpId" required>
+                  <input type="password" name="password2" id="password2" class="form-control mt-3" placeholder="Confirmar contraseña"
+                    aria-describedby="helpId" required>
+                  <input type="date" class="form-control mt-3" value="2000-01-01" name="fecha" id="">
+      
+                  <div class="radioB mt-3 border">
+                    <div class="form-check">
+                        <label class="form-check-label ml-3">
+                            <input type="radio" class="form-check-input sexoF" name="sexo" id="" value="M"
+                                checked>
+                            Mujer
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label ml-3">
+                            <input type="radio" class="form-check-input sexoM" name="sexo" id="" value="H">
+                            Hombre
+                        </label>
+                    </div>
+                </div>
+                  <input type="url" name="image" id="" class="form-control mt-3" placeholder="Url de imagen de perfil"
+                    aria-describedby="helpId">
+      
+                    <div id="responseMSG"></div>
+      
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+                      <button type="submit" id="createUserBtn" class="btn btn-success " disabled>Guardar</button>
+                      <br>
+                    </div>
+                </form>
           </div>
         </div>
       </div>
-    <!-- Just an image -->
+  </div>
 
-    <div class="modal fade" id="registrerModal" tabindex="-1" role="dialog" aria-labelledby="createFormModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="createFormModal">Registrarse</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              
-                <form method="POST" id="createUserForm">
-                    <div class="row">
-                      <div class="col-6">
-                        <input type="text" name="nombre" id="" class="form-control" placeholder="Nombre o nombres"
-                          aria-describedby="helpId" required>
-                      </div>
-                      <div class="col-6">
-                        <input type="text" name="apellidos" id="" class="form-control" placeholder="Apellidos" aria-describedby="helpId"
-                          required>
-                      </div>
-                    </div>
-                    <input type="email" name="email" id="" class="form-control mt-3" placeholder="Correo"
-                      aria-describedby="helpId" required>
-                    <input type="password" name="password1" id="password1" class="form-control mt-3" placeholder="Contraseña"
-                      aria-describedby="helpId" required>
-                    <input type="password" name="password2" id="password2" class="form-control mt-3" placeholder="Confirmar contraseña"
-                      aria-describedby="helpId" required>
-                    <input type="date" class="form-control mt-3" value="2000-01-01" name="fecha" id="">
-        
-                    <div class="radioB mt-3 border">
-                      <div class="form-check">
-                          <label class="form-check-label ml-3">
-                              <input type="radio" class="form-check-input sexoF" name="sexo" id="" value="M"
-                                  checked>
-                              Mujer
-                          </label>
-                      </div>
-                      <div class="form-check">
-                          <label class="form-check-label ml-3">
-                              <input type="radio" class="form-check-input sexoM" name="sexo" id="" value="H">
-                              Hombre
-                          </label>
-                      </div>
-                  </div>
-                    <input type="url" name="image" id="" class="form-control mt-3" placeholder="Url de imagen de perfil"
-                      aria-describedby="helpId">
-        
-                      <div id="responseMSG"></div>
-        
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
-                        <button type="submit" id="createUserBtn" class="btn btn-success " disabled>Guardar</button>
-                        <br>
-                      </div>
-                  </form>
-            </div>
-          </div>
+  <div class="modal fade" id="deleteItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar Item</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          <h4 class=text-danger>¿Estás seguro?</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" >Eliminar Item</button>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="modal fade" id="updateItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actualizar un Item</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="inputItemName">Nombre nuevo del objeto</label>
+              <input type="text" class="form-control" id="updateItemName" placeholder="Espada de Diamante">
+            </div>
+            <div class="form-group">
+              <label for="inputItemName">Imagen del objeto</label>
+              <input type="text" class="form-control" id="updateItemImage" placeholder="url">
+            </div>
+            <div class="form-group">
+              <label for="inputReceta">Receta</label>
+              <input type="text" class="form-control" id="updateReceta" placeholder="url">
+            </div>
+            <div class="form-group">
+              <label for="inputDescripcion">Descripción</label>
+              <input type="text" class="form-control" id="updateDescripcion" placeholder="La espada es la mejor xd">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputDurabilidad">Durabildiad</label>
+                <input type="number" class="form-control" id="updateDurability" placeholder="-1 si no tiene / 1 si si tiene">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Actualizar Objeto</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <nav class="navbar">
         <a class="navbar-brand" href="#">
             <img src="https://e7.pngegg.com/pngimages/193/642/png-clipart-creeper-chibi-minecraft-anime-drawing-chibi-manga-chibi.png" width="50" height="50" alt="" loading="lazy">
@@ -211,7 +319,7 @@
     </nav>
 
 
-    <button id="createItem" type="button" class="btn btn-dark">Añadir Item</button>
+    <button id="createItem" type="button" class="btn btn-dark" data-toggle="modal" data-target="#createItemModal">Añadir Item</button>
     
 
     <ul class="list-unstyled">
@@ -224,7 +332,15 @@
             <a class="mr-3" href="#">
               <img src="https://i.pinimg.com/originals/40/07/5e/40075e6ca8133e63b4996cb0faabb005.png" class="mr-3" alt="Receta">
             </a>
-            <h5 class="mt-0">Durabilidad: 1562</h5>
+            <h5 class="ml-2">Durabilidad: 1562</h5>
+            <div class="ml-4" style="text-align: right;width: 100%;">
+              <div class="mr-4">
+                <button type="button" class="btn btn-primary" id="btnBorrar" data-toggle="modal" data-target="#updateItemModal"><i class="fas fa-edit"></i></button>
+              </div>
+              <div class="mr-4 mt-1">
+                <button type="button" class="btn btn-primary" id="btnActualizar" data-toggle="modal" data-target="#deleteItem"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
           </div>
           <p><b>Descipción: </b>La espada de diamante es la mejor espada que puedes conseguir antes de entrar al Nether.</p>
         </div>
