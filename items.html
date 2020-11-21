@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <title>Usuarios</title>
     <style>
+        body{
+          background-image:url("https://i.redd.it/c8vuay0gtut41.jpg");
+        }
         .navbar{
             background-color:saddlebrown;
         }
@@ -16,120 +19,280 @@
         .nav-item a{
             color:white;
         }
-        #carouselExampleSlidesOnly li.active a{
+        .media-body .media{
+          padding-bottom:10pt;
+        }
+        #createItem{
+          background-color:darkorange;
+          width: 50%;
+          margin-left: 25%;
+          margin-right: 25%;
+        }
+        #createItem:hover,#serchBtn:hover,#serchserch li a:hover{
+          background-color:sandybrown !important;
+        }
+        #serchserch li.active a{
           background-color: saddlebrown !important;
           border-color: saddlebrown !important;
           color: black !important;
         }
-        #carouselExampleSlidesOnly li.disabled a{
+        #serchserch li.disabled a{
           color:saddlebrown !important;
           background-color:rgb(194, 123, 61) !important;
         }
-        #carouselExampleSlidesOnly li a{
+        #serchserch li a,#serchBtn{
           background-color: darkorange !important;
           border-color: saddlebrown !important;
           color: black !important;
         }
-        #serchBtn:hover{
-          background-color: saddlebrown !important;
+        #lasWeas{
+          margin-top: 5px;
+          margin-bottom: 5px;
         }
+       h3{
+         margin-left: 30%;
+         margin-right: 30%;
+         margin-top: 1%;
+
+         background: rgb(252,243,204);
+         background: radial-gradient(circle, rgba(252,243,204,1) 0%, rgba(255,201,121,1) 100%);
+
+         border-color: chocolate;
+         border-width:1.5vh;
+         border-style: groove;
+
+         color:darksalmon;
+         text-align: center;
+       }
+        ul .media:first-child{
+         margin-left: 15%;
+         margin-right: 15%;
+         width: 70%;
+
+         border-width: 1.2vh;
+         border-style:ridge;
+         border-color:slategrey;
+
+         background: rgb(255,255,255);
+         background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(191,191,191,1) 100%);      
+
+       }
+       .media img{
+         width: 60px;
+         height: 60px;
+
+       }
+       ul li img{
+         width: 64px;
+         height: 64px;
+         background: radial-gradient(circle ,0%,100%);
+         margin-left:10pt;
+       }
+       
     </style>
 </head>
 <body>
+  <div class="modal fade" id="createItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Almacenar un Item</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="inputItemName">Nombre del objeto</label>
+              <input type="text" class="form-control" id="inputItemName" placeholder="Espada de Diamante">
+            </div>
+            <div class="form-group">
+              <label for="inputItemName">Imagen del objeto</label>
+              <input type="text" class="form-control" id="inputItemImage" placeholder="url">
+            </div>
+            <div class="form-group">
+              <label for="inputReceta">Receta</label>
+              <input type="text" class="form-control" id="inputReceta" placeholder="url">
+            </div>
+            <div class="form-group">
+              <label for="inputDescripcion">Descripción</label>
+              <input type="text" class="form-control" id="inputDescripcion" placeholder="La espada es la mejor xd">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputDurabilidad">Durabildiad</label>
+                <input type="number" class="form-control" id="inputDurability" placeholder="-1 si no tiene / 1 si si tiene">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Almacenar Objeto</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <div class="modal fade" id="loginModal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Iniciar Sesión</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Correo</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                      <small id="emailHelp" class="form-text text-muted">Tu correo será tan seguro como un cofre de Ender</small>
+ 
+  <div class="modal fade" id="loginModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Iniciar Sesión</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Correo</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">Tu correo será tan seguro como un cofre de Ender</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <p>¿No tienes cuenta? <a href="" data-toggle="modal" data-target="#registrerModal" data-dismiss="modal">!Regístrate aquí!</a></p>
+                </form>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Iniciar sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Just an image -->
+
+  <div class="modal fade" id="registrerModal" tabindex="-1" role="dialog" aria-labelledby="createFormModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createFormModal">Registrarse</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            
+              <form method="POST" id="createUserForm">
+                  <div class="row">
+                    <div class="col-6">
+                      <input type="text" name="nombre" id="" class="form-control" placeholder="Nombre o nombres"
+                        aria-describedby="helpId" required>
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Contraseña</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div class="col-6">
+                      <input type="text" name="apellidos" id="" class="form-control" placeholder="Apellidos" aria-describedby="helpId"
+                        required>
                     </div>
-                    <p>¿No tienes cuenta? <a href="" data-toggle="modal" data-target="#registrerModal" data-dismiss="modal">!Regístrate aquí!</a></p>
-                  </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Iniciar sesión</button>
-            </div>
+                  </div>
+                  <input type="email" name="email" id="" class="form-control mt-3" placeholder="Correo"
+                    aria-describedby="helpId" required>
+                  <input type="password" name="password1" id="password1" class="form-control mt-3" placeholder="Contraseña"
+                    aria-describedby="helpId" required>
+                  <input type="password" name="password2" id="password2" class="form-control mt-3" placeholder="Confirmar contraseña"
+                    aria-describedby="helpId" required>
+                  <input type="date" class="form-control mt-3" value="2000-01-01" name="fecha" id="">
+      
+                  <div class="radioB mt-3 border">
+                    <div class="form-check">
+                        <label class="form-check-label ml-3">
+                            <input type="radio" class="form-check-input sexoF" name="sexo" id="" value="M"
+                                checked>
+                            Mujer
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label ml-3">
+                            <input type="radio" class="form-check-input sexoM" name="sexo" id="" value="H">
+                            Hombre
+                        </label>
+                    </div>
+                </div>
+                  <input type="url" name="image" id="" class="form-control mt-3" placeholder="Url de imagen de perfil"
+                    aria-describedby="helpId">
+      
+                    <div id="responseMSG"></div>
+      
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+                      <button type="submit" id="createUserBtn" class="btn btn-success " disabled>Guardar</button>
+                      <br>
+                    </div>
+                </form>
           </div>
         </div>
       </div>
-    <!-- Just an image -->
+  </div>
 
-    <div class="modal fade" id="registrerModal" tabindex="-1" role="dialog" aria-labelledby="createFormModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="createFormModal">Registrarse</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              
-                <form method="POST" id="createUserForm">
-                    <div class="row">
-                      <div class="col-6">
-                        <input type="text" name="nombre" id="" class="form-control" placeholder="Nombre o nombres"
-                          aria-describedby="helpId" required>
-                      </div>
-                      <div class="col-6">
-                        <input type="text" name="apellidos" id="" class="form-control" placeholder="Apellidos" aria-describedby="helpId"
-                          required>
-                      </div>
-                    </div>
-                    <input type="email" name="email" id="" class="form-control mt-3" placeholder="Correo"
-                      aria-describedby="helpId" required>
-                    <input type="password" name="password1" id="password1" class="form-control mt-3" placeholder="Contraseña"
-                      aria-describedby="helpId" required>
-                    <input type="password" name="password2" id="password2" class="form-control mt-3" placeholder="Confirmar contraseña"
-                      aria-describedby="helpId" required>
-                    <input type="date" class="form-control mt-3" value="2000-01-01" name="fecha" id="">
-        
-                    <div class="radioB mt-3 border">
-                      <div class="form-check">
-                          <label class="form-check-label ml-3">
-                              <input type="radio" class="form-check-input sexoF" name="sexo" id="" value="M"
-                                  checked>
-                              Mujer
-                          </label>
-                      </div>
-                      <div class="form-check">
-                          <label class="form-check-label ml-3">
-                              <input type="radio" class="form-check-input sexoM" name="sexo" id="" value="H">
-                              Hombre
-                          </label>
-                      </div>
-                  </div>
-                    <input type="url" name="image" id="" class="form-control mt-3" placeholder="Url de imagen de perfil"
-                      aria-describedby="helpId">
-        
-                      <div id="responseMSG"></div>
-        
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
-                        <button type="submit" id="createUserBtn" class="btn btn-success " disabled>Guardar</button>
-                        <br>
-                      </div>
-                  </form>
-            </div>
-          </div>
+  <div class="modal fade" id="deleteItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar Item</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          <h4 class=text-danger>¿Estás seguro?</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" >Eliminar Item</button>
+        </div>
+      </div>
     </div>
-    <nav class="navbar">
+  </div>
+
+  <div class="modal fade" id="updateItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actualizar un Item</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="inputItemName">Nombre nuevo del objeto</label>
+              <input type="text" class="form-control" id="updateItemName" placeholder="Espada de Diamante">
+            </div>
+            <div class="form-group">
+              <label for="inputItemName">Imagen del objeto</label>
+              <input type="text" class="form-control" id="updateItemImage" placeholder="url">
+            </div>
+            <div class="form-group">
+              <label for="inputReceta">Receta</label>
+              <input type="text" class="form-control" id="updateReceta" placeholder="url">
+            </div>
+            <div class="form-group">
+              <label for="inputDescripcion">Descripción</label>
+              <input type="text" class="form-control" id="updateDescripcion" placeholder="La espada es la mejor xd">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputDurabilidad">Durabildiad</label>
+                <input type="number" class="form-control" id="updateDurability" placeholder="-1 si no tiene / 1 si si tiene">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Actualizar Objeto</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <nav id="navegación" class="navbar">
         <a class="navbar-brand" href="#">
             <img src="https://e7.pngegg.com/pngimages/193/642/png-clipart-creeper-chibi-minecraft-anime-drawing-chibi-manga-chibi.png" width="50" height="50" alt="" loading="lazy">
         </a>
@@ -151,48 +314,91 @@
             </li>
         </ul>
     </nav>
+    <h3>Almacén</h3>
+    <nav class="navbar navbar-light bg-light justify-content-center" style="background-color:transparent!important;color:transparent;">
+      <form class="form-inline" >
+        <input class="form-control mr-sm-2" style="width:60vmax;" id="serch" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary my-2 my-sm-0" id="serchBtn" type="submit">Search</button>
+      </form>
+    </nav>
 
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="https://media.minecraftforum.net/attachments/15/672/635420838911556673.png" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block" style="top:0%">
-              <h5>Almacén</h5>
-              <nav class="navbar navbar-light bg-light justify-content-center" style="background-color:transparent!important;color:transparent;">
-                <form class="form-inline" >
-                  <input class="form-control mr-sm-2" style="width:60vmax;" id="serch" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-primary my-2 my-sm-0" id="serchBtn" style="border-color:saddlebrown;background-color:darkorange" type="submit">Search</button>
-                </form>
-              </nav>
-              <div id="lasWeas"></div>
-              <nav aria-label="search items pages">
-                <ul class="pagination justify-content-center">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                  </li>
-                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item" aria-current="page"><a class="page-link" href="#">2 </a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-              </nav>
+
+    <button id="createItem" type="button" class="btn btn-dark" data-toggle="modal" data-target="#createItemModal">Añadir Item</button>
+    
+
+    <div id="lasWeas" style="overflow: auto;">
+      <ul class="list-unstyled">
+        <li class="media my-4">
+          <img src="https://lh3.googleusercontent.com/ghaWAQ9fMFJczeawI8bRZbGmRruCxii1294tN-_n0mNd8dcjntE8vuMwqB83fvz18Wit4al7iqZF33ceyPqvxTk=s400" class="align-self-center mr-3" alt="...">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1">Espada de Diamante</h5>
+            <div class="media mt-4">
+              <h5 class="mt-0">Receta</h5>
+              <a class="mr-3" href="#">
+                <img src="https://i.pinimg.com/originals/40/07/5e/40075e6ca8133e63b4996cb0faabb005.png" class="mr-3" alt="Receta">
+              </a>
+              <h5 class="ml-2">Durabilidad: 1562</h5>
+              <div class="ml-4" style="text-align: right;width: 100%;">
+                <div class="mr-4">
+                  <button type="button" class="btn btn-primary" id="btnBorrar" data-toggle="modal" data-target="#updateItemModal"><i class="fas fa-edit"></i></button>
+                </div>
+                <div class="mr-4 mt-1">
+                  <button type="button" class="btn btn-primary" id="btnActualizar" data-toggle="modal" data-target="#deleteItem"><i class="fas fa-trash"></i></button>
+                </div>
+              </div>
             </div>
-        </div>
-        </div>
-      </div>
+            <p><b>Descipción: </b>La espada de diamante es la mejor espada que puedes conseguir antes de entrar al Nether.</p>
+          </div>
+        </li>
+      </ul>
+      <ul class="list-unstyled">
+        <li class="media my-4">
+          <img src="https://lh3.googleusercontent.com/ghaWAQ9fMFJczeawI8bRZbGmRruCxii1294tN-_n0mNd8dcjntE8vuMwqB83fvz18Wit4al7iqZF33ceyPqvxTk=s400" class="align-self-center mr-3" alt="...">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1">Espada de Diamante</h5>
+            <div class="media mt-4">
+              <h5 class="mt-0">Receta</h5>
+              <a class="mr-3" href="#">
+                <img src="https://i.pinimg.com/originals/40/07/5e/40075e6ca8133e63b4996cb0faabb005.png" class="mr-3" alt="Receta">
+              </a>
+              <h5 class="ml-2">Durabilidad: 1562</h5>
+              <div class="ml-4" style="text-align: right;width: 100%;">
+                <div class="mr-4">
+                  <button type="button" class="btn btn-primary" id="btnBorrar" data-toggle="modal" data-target="#updateItemModal"><i class="fas fa-edit"></i></button>
+                </div>
+                <div class="mr-4 mt-1">
+                  <button type="button" class="btn btn-primary" id="btnActualizar" data-toggle="modal" data-target="#deleteItem"><i class="fas fa-trash"></i></button>
+                </div>
+              </div>
+            </div>
+            <p><b>Descipción: </b>La espada de diamante es la mejor espada que puedes conseguir antes de entrar al Nether.</p>
+          </div>
+        </li>
+      </ul>
     </div>
+    <nav id="serchserch" aria-label="search items pages">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active" aria-current="page"><a class="page-link" href="#">2 </a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+    <br>
+  </div>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     <script>
       $(document).ready((e)=>{
-          $("#serchBtn").click((e)=>{
-            //alert(e);
-          });
-          $(".carousel-item").height(window.innerHeight-$("nav").height()-16);
-          console.log($(".carousel-item").height());
-      })
+        console.log(window.innerHeight-$("#navegación").height()*1.27*.775)
+        $("#lasWeas").height((window.innerHeight-$("#navegación").height()*1.27)*.67);
+      });
     </script>
   </body>
 </html>

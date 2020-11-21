@@ -27,6 +27,78 @@
     </style>
 </head>
 <body>
+  <div class="modal fade" id="eraseTradeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar cuenta</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h4 class=text-danger>¿Estás seguro?</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" >Eliminar cuenta</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="registrerModal" tabindex="-1" role="dialog" aria-labelledby="createFormModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createFormModal">Editar usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+            <form method="POST" id="createUserForm">
+                <div class="row">
+                  <div class="col-6">
+                    <input type="text" name="nombre" id="" class="form-control" placeholder="Nombre o nombres" aria-describedby="helpId" required>
+                  </div>
+                  <div class="col-6">
+                    <input type="text" name="apellidos" id="" class="form-control" placeholder="Apellidos" aria-describedby="helpId" required>
+                  </div>
+                </div>
+                <input type="email" name="email" id="" class="form-control mt-3" placeholder="Correo" aria-describedby="helpId" required>
+                <input type="password" name="password1" id="password1" class="form-control mt-3" placeholder="Contraseña" aria-describedby="helpId" required>
+                <input type="password" name="password2" id="password2" class="form-control mt-3" placeholder="Confirmar contraseña" aria-describedby="helpId" required>
+                <input type="date" class="form-control mt-3" value="2000-01-01" name="fecha" id="">
+                <div class="radioB mt-3 border">
+                  <div class="form-check">
+                      <label class="form-check-label ml-3">
+                          <input type="radio" class="form-check-input sexoF" name="sexo" id="" value="M"
+                              checked>
+                          Mujer
+                      </label>
+                  </div>
+                  <div class="form-check">
+                      <label class="form-check-label ml-3">
+                          <input type="radio" class="form-check-input sexoM" name="sexo" id="" value="H">
+                          Hombre
+                      </label>
+                  </div>
+              </div>
+                <input type="url" name="image" id="" class="form-control mt-3" placeholder="Url de imagen de perfil" aria-describedby="helpId">
+                  <div id="responseMSG"></div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+                    <button type="submit" id="createUserBtn" class="btn btn-success " disabled>Guardar</button>
+                    <br>
+                  </div>
+              </form>
+        </div>
+      </div>
+    </div>
+</div>
+
     <nav class="navbar">
         <a class="navbar-brand" href="#">
             <img src="https://e7.pngegg.com/pngimages/193/642/png-clipart-creeper-chibi-minecraft-anime-drawing-chibi-manga-chibi.png" width="50" height="50" alt="" loading="lazy">
@@ -62,6 +134,8 @@
                         <p class="mt-5">Correo: </p>
                         <p >Fecha de nacimiento: </p>
                         <p >Sexo: </p>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#registrerModal"><i class="fas fa-edit"></i></button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eraseTradeModal"><i class="fas fa-trash"></i></button>
                     </div>
                   </div>
               </div>
