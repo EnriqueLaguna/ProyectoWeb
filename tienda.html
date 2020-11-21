@@ -7,16 +7,74 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <title>Usuarios</title>
     <style>
-        .navbar{
-            background-color:saddlebrown;
-        }
-        .navbar ul{
-            background-color:darkorange;
-        }
-        .nav-item a{
-            color:white;
-        }
-        
+      body{
+          background-image:url("https://i.imgur.com/KtOxR18.jpg");
+      }
+      .navbar{
+          background-color:saddlebrown;
+      }
+      .navbar ul{
+          background-color:darkorange;
+      }
+      .nav-item a{
+          color:white;
+      }
+      h3{
+        margin-left: 30%;
+        margin-right: 30%;
+        margin-top: 1%;
+
+        background: rgb(252,243,204);
+        background: radial-gradient(circle, rgba(252,243,204,1) 0%, rgba(255,201,121,1) 100%);
+
+        border-color: chocolate;
+        border-width:1.5vh;
+        border-style: groove;
+
+        color:darksalmon;
+        text-align: center;
+      }
+      #createTrade{
+        background-color:darkorange;
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+      }
+      .media{
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+
+        background-color: darkgray;
+      }
+      #lasWeas{
+        margin-top: 10pt;
+        margin-bottom: 10pt;
+      }
+      img{
+        width: 60px;
+        height: 60px;
+      }
+      #Trade{
+        border-color: chocolate;
+        border-width:1.5vh;
+        border-style: groove;
+
+        background: rgb(252,243,204);
+        background: radial-gradient(circle, rgba(252,243,204,1) 0%, rgba(255,201,121,1) 100%);
+
+        background-color: lightgray;
+      }
+
+      #Trade img{
+        margin-top: 8%;
+      }
+
+      #Trade #tradeComprar{
+        width: 40%;
+        margin-top:5%;
+      }
+      
     </style>
 </head>
 <body>
@@ -112,6 +170,68 @@
           </div>
         </div>
     </div>
+
+    <div class="modal fade" id="createTradeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Crear un intercambio</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="inputTraderName">Nombre del vendedor</label>
+                <input type="text" class="form-control" id="createTradeName" placeholder="Tu nombre/apodo">
+              </div>
+              <div class="form-group">
+                <label for="inputItemName">Nombre del item</label>
+                <input type="text" class="form-control" id="createTradeItem" placeholder="Espada de Esmeralda">
+              </div>
+              <div class="form-group">
+                <label for="inputItem">Imagen del item</label>
+                <input type="text" class="form-control" id="createTradeImage" placeholder="url">
+              </div>
+              <div class="form-group">
+                <label for="inputPrecie">Precio</label>
+                <input type="number" class="form-control" id="createTradePrice" placeholder="No seas carero">
+              </div>
+              <div class="form-group">
+                <label for="inputDescription">Descripción</label>
+                <input type="text" class="form-control" id="createTradeDescription" placeholder="Unica en su tipo">
+              </div>   
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-success">Crear intercambio</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="eraseTradeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Eliminar intercambio</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h4 class=text-danger>¿Estás seguro?</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" >Eliminar Item</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <nav class="navbar">
         <a class="navbar-brand" href="#">
             <img src="https://e7.pngegg.com/pngimages/193/642/png-clipart-creeper-chibi-minecraft-anime-drawing-chibi-manga-chibi.png" width="50" height="50" alt="" loading="lazy">
@@ -135,8 +255,53 @@
         </ul>
     </nav>
 
+    <h3>Tienda</h3>
+
+    <button id="createTrade" type="button" class="btn btn-dark" data-toggle="modal" data-target="#createTradeModal">Crear Intercambio</button>
+
+    <div id="lasWeas">
+      <div class="justify-content-center" style="width: 64%;margin-left: 18%;">
+        <div id="Trade" class="row">
+          <div style="width: 10%;text-align: center;margin-top: 1%;margin-bottom: 1%;">
+          <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/44/Diamond_Sword_JE3_BE3.png/revision/latest/scale-to-width-down/160?cb=20201017135722">
+          </div>
+          <div style="width: 10%;margin-left: 1%;text-align: center;margin-top: 1%;margin-bottom: 1%;">
+            <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/44/Diamond_Sword_JE3_BE3.png/revision/latest/scale-to-width-down/160?cb=20201017135722"> 
+          </div>
+          <div style="width: 10%;margin-left: 1%;text-align: center;margin-top: 1%;margin-bottom: 1%;">
+            <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/44/Diamond_Sword_JE3_BE3.png/revision/latest/scale-to-width-down/160?cb=20201017135722"> 
+          </div>
+          <div style="width: 40%;margin-left: 1%;text-align: center;margin-top: 1%;margin-bottom: 1%;">
+            <button id="tradeComprar" type="button" class="btn btn-success">Comprar</button>
+          </div>
+          <div style="width: 26%;margin-left: 1%;text-align: right;margin-top: 1%;margin-bottom: 1%;">
+            <div class="mr-4">
+              <button type="button" class="btn btn-info" style="margin-right: 5%;" data-toggle="modal" data-target="#createTradeModal"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="mr-4 mt-1">
+              <button type="button" class="btn btn-danger" style="margin-right: 5%;" data-toggle="modal" data-target="#eraseTradeModal"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <nav aria-label="search items pages">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item" aria-current="page"><a class="page-link" href="#">2 </a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+    <br>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 </body>
 </html>
