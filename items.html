@@ -28,19 +28,19 @@
           margin-left: 25%;
           margin-right: 25%;
         }
-        #createItem:hover{
-          background-color:sandybrown;
+        #createItem:hover,#serchBtn:hover,#serchserch li a:hover{
+          background-color:sandybrown !important;
         }
-        #carouselExampleSlidesOnly li.active a{
+        #serchserch li.active a{
           background-color: saddlebrown !important;
           border-color: saddlebrown !important;
           color: black !important;
         }
-        #carouselExampleSlidesOnly li.disabled a{
+        #serchserch li.disabled a{
           color:saddlebrown !important;
           background-color:rgb(194, 123, 61) !important;
         }
-        #carouselExampleSlidesOnly li a{
+        #serchserch li a,#serchBtn{
           background-color: darkorange !important;
           border-color: saddlebrown !important;
           color: black !important;
@@ -318,7 +318,7 @@
     <nav class="navbar navbar-light bg-light justify-content-center" style="background-color:transparent!important;color:transparent;">
       <form class="form-inline" >
         <input class="form-control mr-sm-2" style="width:60vmax;" id="serch" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-primary my-2 my-sm-0" id="serchBtn" style="border-color:saddlebrown;background-color:darkorange" type="submit">Search</button>
+        <button class="btn btn-primary my-2 my-sm-0" id="serchBtn" type="submit">Search</button>
       </form>
     </nav>
 
@@ -375,62 +375,14 @@
           </div>
         </li>
       </ul>
-      <ul class="list-unstyled">
-        <li class="media my-4">
-          <img src="https://lh3.googleusercontent.com/ghaWAQ9fMFJczeawI8bRZbGmRruCxii1294tN-_n0mNd8dcjntE8vuMwqB83fvz18Wit4al7iqZF33ceyPqvxTk=s400" class="align-self-center mr-3" alt="...">
-          <div class="media-body">
-            <h5 class="mt-0 mb-1">Espada de Diamante</h5>
-            <div class="media mt-4">
-              <h5 class="mt-0">Receta</h5>
-              <a class="mr-3" href="#">
-                <img src="https://i.pinimg.com/originals/40/07/5e/40075e6ca8133e63b4996cb0faabb005.png" class="mr-3" alt="Receta">
-              </a>
-              <h5 class="ml-2">Durabilidad: 1562</h5>
-              <div class="ml-4" style="text-align: right;width: 100%;">
-                <div class="mr-4">
-                  <button type="button" class="btn btn-primary" id="btnBorrar" data-toggle="modal" data-target="#updateItemModal"><i class="fas fa-edit"></i></button>
-                </div>
-                <div class="mr-4 mt-1">
-                  <button type="button" class="btn btn-primary" id="btnActualizar" data-toggle="modal" data-target="#deleteItem"><i class="fas fa-trash"></i></button>
-                </div>
-              </div>
-            </div>
-            <p><b>Descipción: </b>La espada de diamante es la mejor espada que puedes conseguir antes de entrar al Nether.</p>
-          </div>
-        </li>
-      </ul>
-      <ul class="list-unstyled">
-        <li class="media my-4">
-          <img src="https://lh3.googleusercontent.com/ghaWAQ9fMFJczeawI8bRZbGmRruCxii1294tN-_n0mNd8dcjntE8vuMwqB83fvz18Wit4al7iqZF33ceyPqvxTk=s400" class="align-self-center mr-3" alt="...">
-          <div class="media-body">
-            <h5 class="mt-0 mb-1">Espada de Diamante</h5>
-            <div class="media mt-4">
-              <h5 class="mt-0">Receta</h5>
-              <a class="mr-3" href="#">
-                <img src="https://i.pinimg.com/originals/40/07/5e/40075e6ca8133e63b4996cb0faabb005.png" class="mr-3" alt="Receta">
-              </a>
-              <h5 class="ml-2">Durabilidad: 1562</h5>
-              <div class="ml-4" style="text-align: right;width: 100%;">
-                <div class="mr-4">
-                  <button type="button" class="btn btn-primary" id="btnBorrar" data-toggle="modal" data-target="#updateItemModal"><i class="fas fa-edit"></i></button>
-                </div>
-                <div class="mr-4 mt-1">
-                  <button type="button" class="btn btn-primary" id="btnActualizar" data-toggle="modal" data-target="#deleteItem"><i class="fas fa-trash"></i></button>
-                </div>
-              </div>
-            </div>
-            <p><b>Descipción: </b>La espada de diamante es la mejor espada que puedes conseguir antes de entrar al Nether.</p>
-          </div>
-        </li>
-      </ul>
     </div>
-    <nav aria-label="search items pages">
+    <nav id="serchserch" aria-label="search items pages">
       <ul class="pagination justify-content-center">
         <li class="page-item disabled">
           <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
         </li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item" aria-current="page"><a class="page-link" href="#">2 </a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active" aria-current="page"><a class="page-link" href="#">2 </a></li>
         <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item"><a class="page-link" href="#">Next</a></li>
       </ul>
