@@ -22,9 +22,13 @@ const PORT = process.env.PORT || 3000;
 let TOKEN=undefined;
 
 function authentication(req,res,next){
+    if(req.method==="POST"&&req.baseUrl.includes("users")){
+        console.log("skipped")
+        next();
+    }
     jwt.verify(TOKEN,JwT,(err,decoded)=>{
         if(err){
-
+            res.status(401).send("Not authorized");
         }else{
             req.body.token=TOKEN;
             next();
@@ -45,6 +49,7 @@ function authentication(req,res,next){
 
 //app.use('/api/users',authentication,usersRouter);
 app.use('/api/users',authentication,usersRouter);
+app.use('/api/items',authentication,itemsRouter);
 
 app.post('/api/login', async(req,res)=>{
     if(req.body.email && req.body.password){
@@ -56,7 +61,7 @@ app.post('/api/login', async(req,res)=>{
             uctrl.updateUser(user);
             res.status(200).send({"token":TOKEN});
         }else{
-            res.status(401).send('Wrong credentials');
+            res.status(404).send('User not found');
         }
     }else{
         res.status(400).send('Missing user/pass');

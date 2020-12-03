@@ -5,6 +5,10 @@ const cloudant = new CloudantSDK(CLOUDANT_CREDS.url);
 const USERS_CLOUDANT_DB = cloudant.db.use('users');
 
 class UsersController{
+    async createUser(user){
+        await USERS_CLOUDANT_DB.insert(user);
+    }
+
     async getUsers(){
         let users = new Array();
         let entries = await USERS_CLOUDANT_DB.list({include_docs:true});

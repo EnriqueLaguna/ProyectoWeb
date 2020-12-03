@@ -7,29 +7,26 @@ const router = express();
 const jwt=require("jsonwebtoken");
 const JwT="Foc@andaForTheWin";
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     let b = req.body;
-    if (b.nombre && b.apellidos && b.email && b.sexo && b.fecha) {
-        usersCtrl.getUniqueUser(b.nombre, b.apellidos, b.email,(ok)=>{
-            console.log(ok);
-            if (ok) {
-                res.status(400).send('user already exists');
-            } else {
-                usersCtrl.insertUser(b,(nu)=>{
-                    res.status(201).send(nu);
-                },(err)=>{
-    
-                });
-            }
-        });
-    } else {
-        res.status(400).send('missing arguments');
+    let user=await usersCtrl.getUserByEmail(b.email);
+    if(user){
+        res.status(400).send("User already exists");
+    }else{
+        console.log("post");
+        console.log(b);
+        usersCtrl.createUser(b);
+        res.status(200).send();
     }
 });
 
 router.get('/', async(req, res) => {
     let deco=jwt.verify(req.body.token,JwT);
-    res.send(await usersCtrl.getUserById(deco));
+    let user=await usersCtrl.getUserById(deco);
+    if(user)
+        res.status(200).send(user);
+    else
+        res.status(404).send("Not found");
 });
 
 router.put('/:email',(req,res)=>{

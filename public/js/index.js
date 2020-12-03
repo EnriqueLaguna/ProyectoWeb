@@ -24,8 +24,28 @@ function login() {
         logged=true;
         $(butt).children().attr("data-toggle",(logged?"":"modal"));
         $("#loginModal").modal("hide");
+        $("#loginres").html("<b class='text-success'>Bienvenido</b>");
     },(err)=>{
+        $("#loginres").html("<b class='text-danger'>"+err+"</b>");
         console.log("Err")
+    });
+}
+
+function createUser() {
+    let u=document.querySelectorAll("#createUserForm");
+    sendHTTPRequest(APIURL+'/users',JSON.stringify({
+        name:u[0][0].value,
+        lastname:u[0][1].value,
+        email:u[0][2].value,
+        password:u[0][3].value,
+        birthDay:u[0][5].value,
+        sexo:u[0][6].checked?"M":"H",
+        image:u[0][8].value.length>0?u[0][8].value:undefined
+    }),"POST",(data)=>{
+        document.getElementById("responseMSG").innerHTML='<div class="text-success">Registrado exitosamente.</div>';
+        $("#registrerModal").modal("hide");
+    },(err)=>{
+        document.getElementById("responseMSG").innerHTML='<div class="text-danger">'+err+'</div>';
     });
 }
 
@@ -33,10 +53,13 @@ document.addEventListener("DOMContentLoaded",()=>{
     let butts=$(".nav-item");
     for(let i=0;i<4;i++)
         $(butts[i]).click(()=>{
-            if(i==0)
-                $("iframe").height("109vh");
-            else
-                $("iframe").height("93.125vh");
+            if(i==0){
+                //$("iframe").height("109vh");
+                $("iframe").css("overflow-y","auto");
+            }else{
+                //$("iframe").height("94vh");
+                $("iframe").css("overflow-y","hidden");
+            }
             for(let b of butts)
                 $(b).children().removeClass("active");
             $(butts[i]).children().addClass("active");
@@ -55,5 +78,16 @@ document.addEventListener("DOMContentLoaded",()=>{
                 $(b).children().removeClass("active");
             $(butts[4]).children().addClass("active");
         }
+    });
+    $("#createUserBtn").on("click",(e)=>{
+        e.preventDefault();
+        createUser();
+    })
+    $('#registrerModal').on('show.bs.modal', function (e) {
+        let us=document.getElementById("createUserForm");
+        us.addEventListener('change',(a)=>{
+            let u=document.querySelectorAll("#createUserForm");
+            document.getElementById("createUserBtn").disabled=!($(u[0][0]).is(":valid")&&$(u[0][1]).is(":valid")&&$(u[0][2]).is(":valid")&&$(u[0][3]).is(":valid")&&(u[0][4].value===u[0][3].value)&&$(u[0][5]).is(":valid")&&(u[0][8].value.length==0||$(u[0][8]).is(":valid")));
+        });
     });
 });

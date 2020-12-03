@@ -93,7 +93,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form id="createItemForm">
             <div class="form-group">
               <label for="inputItemName">Nombre del objeto</label>
               <input type="text" class="form-control" id="inputItemName" placeholder="Espada de Diamante">
@@ -104,7 +104,7 @@
             </div>
             <div class="form-group">
               <label for="inputReceta">Receta</label>
-              <input type="text" class="form-control" id="inputReceta" placeholder="url">
+              <input type="text" class="form-control" id="inputReceta" placeholder="url (opcional)">
             </div>
             <div class="form-group">
               <label for="inputDescripcion">Descripción</label>
@@ -117,10 +117,11 @@
               </div>
             </div>
           </form>
+          <div id="responseMSG"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Almacenar Objeto</button>
+          <button type="button" id="createItemBtn" class="btn btn-primary">Almacenar Objeto</button>
         </div>
       </div>
     </div>
@@ -183,7 +184,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Actualizar Objeto</button>
+          <button type="button" id="updateItemBtn" class="btn btn-primary">Actualizar Objeto</button>
         </div>
       </div>
     </div>
@@ -201,7 +202,7 @@
     <button id="createItem" type="button" class="btn btn-dark" data-toggle="modal" data-target="#createItemModal">Añadir Item</button>
     
 
-    <div id="lasWeas" style="overflow: auto;height: 63vh;">
+    <div id="lasWeas" style="overflow: auto;height: 63vh;width: 100%;">
       <ul class="list-unstyled">
         <li class="media my-4">
           <img src="https://lh3.googleusercontent.com/ghaWAQ9fMFJczeawI8bRZbGmRruCxii1294tN-_n0mNd8dcjntE8vuMwqB83fvz18Wit4al7iqZF33ceyPqvxTk=s400" class="align-self-center mr-3" alt="...">

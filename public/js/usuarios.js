@@ -22,16 +22,17 @@ document.addEventListener("DOMContentLoaded",()=>{
         $("#imaGen").attr("src",datos.image?datos.image:"https://i.pinimg.com/originals/d5/4f/79/d54f79b4d5eae0aa47639c960dd891d1.jpg");
         $(stuff[0]).html("Usuario: "+datos.name+" "+datos.lastname);
         $(stuff[1]).html("Correo: "+datos.email);
-        $(stuff[2]).html("Fecha: "+new Date(datos.birthday));
+        $(stuff[2]).html("Fecha: "+datos.birthDay);
         $(stuff[3]).html("Sexo: "+datos.sexo);
         $("#updateUserModal").on("shown.bs.modal",()=>{
+            let bd=datos.birthDay.split("-");
             let inputs=$(".form-control");
             inputs[0].value=datos.name;
             inputs[1].value=datos.lastname;
             inputs[2].value=datos.email;
             inputs[3].value=datos.password;
             inputs[4].value=inputs[3].value;
-            inputs[5].value=datos.birthday;
+            inputs[5].value=datos.birthDay;//new Date(bd[0],bd[1],bd[2]);
             inputs[6].value=datos.image;
             $("#sex1").attr("checked",datos.sexo=="M");
             $("#sex2").attr("checked",datos.sexo=="H");
