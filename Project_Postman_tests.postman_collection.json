@@ -1,0 +1,539 @@
+{
+	"info": {
+		"_postman_id": "f23d7a12-1c6a-4996-9f38-bde01b60a7c3",
+		"name": "Project_Postman_tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login_rightCredentials",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"rodrigolaguna@gmail.com\",\r\n    \"password\": \"Rlaguna00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login_BadCredentials",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"unemailtodoraro@hotmail.com\",\r\n    \"password\":\"unacontraseñaincreible\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login_MissingArguments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"soyunemailsincontraseña@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createUser_correct",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIzOWZhYmQ5NzJiZjllYjFhOTY4ZDljZmNlMWYwN2JlZiIsImlhdCI6MTYwNzA5NTkzNX0.fnP1ljUr0rMSse-3CzBBVqDhaSkgMzYak2OKY8e24Rk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Carlos\",\r\n    \"lastname\": \"ApellidoDesconocido\",\r\n    \"email\": \"elCarlos@gmail.com\",\r\n    \"password\": \"unasalvajadasobrecoches\",\r\n    \"birthDay\": \"2000-07-11\",\r\n    \"sexo\": \"H\",\r\n    \"image\": \"https://cdn.bioguia.com/embed/bfc82e7b1fb8d3591be926e6a30a58770ecdf81587402262/fish.jpg?imagick=1&size=500\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createUser_userAlreadyExists",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Gabo\",\r\n    \"lastname\": \"Gabilan\",\r\n    \"email\": \"gabogabilan@gmail.com\",\r\n    \"password\": \"Thelastjedi00\",\r\n    \"birthDay\": \"2000-09-09\",\r\n    \"sexo\": \"H\",\r\n    \"image\": \"https://cdn.bioguia.com/embed/bfc82e7b1fb8d3591be926e6a30a58770ecdf81587402262/fish.jpg?imagick=1&size=500\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUser_RightToken",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIzOWZhYmQ5NzJiZjllYjFhOTY4ZDljZmNlMWYwN2JlZiIsImlhdCI6MTYwNzA5NTQ4OH0.pxiJ8GVZf5eC43RBn8Y93_5Va5LdGa6Z1yyh305OCIY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "You must do the \"POST\" with right credentials for the token"
+			},
+			"response": []
+		},
+		{
+			"name": "getUser_noToken",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Hidalgo\",\r\n    \"email\":\"rodrigolaguna@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/users/:email",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						":email"
+					],
+					"variable": [
+						{
+							"key": "email",
+							"value": "rodrigolaguna@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser_wrongEmail",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/users/:email",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						":email"
+					],
+					"variable": [
+						{
+							"key": "email",
+							"value": "asdfasdf@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/users/:email",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						":email"
+					],
+					"variable": [
+						{
+							"key": "email",
+							"value": "dmunoz024@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetItem",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/items?name=Zanahoria",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"items"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Zanahoria"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetItemList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/items",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateItem",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ItemName\": \"Flecha corta\",\r\n  \"ItemImage\": \"https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/25/Arrow_%28item%29_JE1_BE1.png/revision/latest/scale-to-width-down/32?cb=20190403171057\",\r\n  \"Receta\": \"https://www.tapgamers.com/wp-content/themes/eGamer/timthumb.php?src=http://www.tapgamers.com/wp-content/uploads/2012/09/Arrows-Icon.png&h=250&w=250&zc=1&q=90\",\r\n  \"Descripcion\": \"Munición para casi todas las armas de rango en el juego\",\r\n  \"Durabilidad\": \"-1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/items",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateAnItem",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ItemName\": \"Zanahoria\",\r\n    \"ItemImage\": \"https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/25/Arrow_%28item%29_JE1_BE1.png/revision/latest/scale-to-width-down/32?cb=20190403171057\",\r\n    \"Receta\": \"\",\r\n    \"Descripcion\": \"Conejos\",\r\n    \"Durabilidad\": -1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/items?id=04bd7409c167516243b6f5d61255cb5c",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"items"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "04bd7409c167516243b6f5d61255cb5c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteItem",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/items?id=c462ed022a940289f09fa2c079bf7ab3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"items"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "c462ed022a940289f09fa2c079bf7ab3"
+						}
+					]
+				},
+				"description": "uses item Id"
+			},
+			"response": []
+		},
+		{
+			"name": "CreateTrade",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"NombreUsuario\": \"Enrique\",\r\n    \"NombreItem\": \"Flecha Corta\",\r\n    \"Precio\": \"15\",\r\n    \"Fecha\": 1607049540401\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/trades",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"trades"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTrades",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/trades",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"trades"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdataTrade",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"NombreUsuario\": \"No Enrique\",\r\n    \"NombreItem\": \"Espada de diamante\",\r\n    \"Precio\": \"200\",\r\n    \"Fecha\": 1607049540301\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/trades?id=0d325ccb145059edbec08c5822bd7f83",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"trades"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "0d325ccb145059edbec08c5822bd7f83"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteTrade",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/trades?id=0d325ccb145059edbec08c5822bd7f83",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"trades"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "0d325ccb145059edbec08c5822bd7f83"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

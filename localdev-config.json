@@ -1,0 +1,12 @@
+{
+    "apikey": "xdUHqY0aAd7fHI9KTZ-3OnPbdzF_T9vhBl6LmzXXiocf",
+    "host": "b1941d9b-4f78-40d0-8062-8ed4cab3228f-bluemix.cloudantnosqldb.appdomain.cloud",
+    "iam_apikey_description": "Auto-generated for key 950b4ded-c2c3-4192-a80b-033a5ce45483",
+    "iam_apikey_name": "Enrique_Laguna",
+    "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+    "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/c9ba5bda72434401b2ca5fc6a346ca4a::serviceid:ServiceId-9dc86e19-f598-4a71-bf0c-31ebe08edc23",
+    "password": "3a7288b04b811eb42ab0d325abfe6de8396160eec84a0b2ffcbaab3d2c3efc04",
+    "port": 443,
+    "url": "https://b1941d9b-4f78-40d0-8062-8ed4cab3228f-bluemix:3a7288b04b811eb42ab0d325abfe6de8396160eec84a0b2ffcbaab3d2c3efc04@b1941d9b-4f78-40d0-8062-8ed4cab3228f-bluemix.cloudantnosqldb.appdomain.cloud",
+    "username": "b1941d9b-4f78-40d0-8062-8ed4cab3228f-bluemix"
+}
