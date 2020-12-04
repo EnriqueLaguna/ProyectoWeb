@@ -18,6 +18,7 @@ class ItemsController{
 
     async getList(){
         let entries = await ITEMS_CLOUDANT_DB.list({include_docs:true});
+
         return entries.rows.map((d)=>{
             return {
                 Durabilidad: d.doc.Durabilidad,
@@ -28,6 +29,9 @@ class ItemsController{
             }
         });
         //return entries.rows;
+
+        return entries.rows;
+
     }
 
     async getItemByName(name){

@@ -17,6 +17,7 @@ class TradeControllers{
 
     async getList(){
         let entries = await TRADES_CLOUDANT_DB.list({include_docs:true});
+
         return entries.rows.map((d)=>{
             return {
                 NombreUsuario: d.doc.NombreUsuario,

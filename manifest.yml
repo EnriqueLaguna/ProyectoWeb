@@ -10,3 +10,4 @@ applications:
   host: eld-dme-proyecto
   env:
     OPTIMIZE_MEMORY: true 
+
