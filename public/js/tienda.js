@@ -24,24 +24,24 @@ function tradeToHTML(trade){
         <div class="justify-content-center" style="width: 64%;margin-left: 18%;">
             <div id="Trade" class="row">
                 <div style="width: 10%;text-align: center;margin-top: 1%;margin-bottom: 1%;">
-                    <img src='${APIURL+'/items?name='+trade.doc.NombreItem}'>
+                    <img src='${APIURL+'/items?name='+trade.NombreItem}'>
                 </div>
                 <div style="width: 10%;margin-left: 1%;text-align: center;margin-top: 1%;margin-bottom: 1%;">
                     <img src="/images/arrow.jpg"> 
                 </div>
                 <div style="width: 10%;margin-left: 1%;text-align: center;margin-top: 1%;margin-bottom: 1%;">
                     <img src="./images/eme.png"> 
-                    <div style="background-color: darkorange;width: 50%;margin-left: auto;margin-right: auto;">${trade.doc.Precio}</div>
+                    <div style="background-color: darkorange;width: 50%;margin-left: auto;margin-right: auto;">${trade.Precio}</div>
                 </div>
                 <div style="width: 40%;margin-left: 1%;text-align: center;margin-top: 1%;margin-bottom: 1%;">
-                    <button id="tradeComprar" data-trade='${trade.doc._id}' onclick="buyTrade(this)" type="button" class="btn btn-success">Comprar a ${trade.doc.NombreUsuario}</button>
+                    <button id="tradeComprar" data-trade='${trade._id}' onclick="buyTrade(this)" type="button" class="btn btn-success">Comprar a ${trade.NombreUsuario}</button>
                 </div>
                 <div style="width: 26%;margin-left: 1%;text-align: right;margin-top: 1%;margin-bottom: 1%;">
                     <div class="mr-4">
-                        <button type="button" class="btn btn-info" style="margin-right: 5%;" data-toggle="modal" data-tarada='${JSON.stringify(trade.doc)}' data-target="#createTradeModal"><i class="fas fa-edit"></i></button>
+                        <button type="button" class="btn btn-info" style="margin-right: 5%;" data-toggle="modal" data-tarada='${JSON.stringify(trade)}' data-target="#createTradeModal"><i class="fas fa-edit"></i></button>
                     </div>
                     <div class="mr-4 mt-1">
-                        <button type="button" class="btn btn-danger" style="margin-right: 5%;" data-toggle="modal" data-trade='${trade.doc._id}' data-target="#eraseTradeModal"><i class="fas fa-trash"></i></button>
+                        <button type="button" class="btn btn-danger" style="margin-right: 5%;" data-toggle="modal" data-trade='${trade._id}' data-target="#eraseTradeModal"><i class="fas fa-trash"></i></button>
                     </div>
                 </div>
             </div>

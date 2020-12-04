@@ -1,6 +1,7 @@
 const fs = require('fs');
 const CloudantSDK = require('@cloudant/cloudant');
 const CLOUDANT_CREDS = require('../localdev-config.json');
+const { Console } = require('console');
 const cloudant = new CloudantSDK(CLOUDANT_CREDS.url);
 const ITEMS_CLOUDANT_DB = cloudant.db.use('items');
 
@@ -17,7 +18,20 @@ class ItemsController{
 
     async getList(){
         let entries = await ITEMS_CLOUDANT_DB.list({include_docs:true});
+
+        return entries.rows.map((d)=>{
+            return {
+                Durabilidad: d.doc.Durabilidad,
+                Descripcion: d.doc.Descripcion,
+                ItemName: d.doc.ItemName,
+                ItemImage: d.doc.ItemImage,
+                Receta: d.doc.Receta,
+            }
+        });
+        //return entries.rows;
+
         return entries.rows;
+
     }
 
     async getItemByName(name){

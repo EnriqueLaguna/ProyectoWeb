@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
         res.status(400).send("Item already exists");
     }else{
         itemsCtrl.createItem(b);
-        res.status(200).send();
+        res.status(200).send("Item succesfully created");
     }
 });
 
@@ -24,26 +24,31 @@ router.delete('/',async(req,res)=>{
             itemsCtrl.deleteItem(item);
             res.status(200).send(item);
         }else
-            res.status(404).send();
+            res.status(404).send("Item not found");
     }else
-        res.status(400).send();
+        res.status(400).send("Missing item id");
 });
 
 router.get('/', async(req, res) => {
-    if(req.query.name){
-        let item=await itemsCtrl.getItemByName(req.query.name);
-        if(item){
-            res.redirect(item.ItemImage);
-            //res.status(200).send();
-        }else res.status(404).send("no");
-    }else if(req.query.page&&req.query.limit){
+    if(req.query.page&&req.query.limit){
         let its=await itemsCtrl.getList();
         let tp=parseInt(its.length/req.query.limit)+(its.length%req.query.limit>0?1:0);
+        //console.log(its);
         if(its){
-            if(req.query.name)its=its.filter((e,b,c)=>e.doc.ItemName.toUpperCase().includes(req.query.name.toUpperCase()));
+            if(req.query.name)its=its.filter((e,b,c)=>e.ItemName.toUpperCase().includes(req.query.name.toUpperCase()));
+            console.log(its);
             res.status(200).send({items:its.slice(req.query.page*req.query.limit,req.query.page*req.query.limit+req.query.limit),totalPages:tp});
         }else
             res.status(400).send();
+    }
+    else if(req.query.name){
+        let item=await itemsCtrl.getItemByName(req.query.name);
+        if(item){
+            //res.redirect(item.ItemImage);
+            res.status(200).send(item);
+        }else{
+            res.status(404).send("no");
+        }        
     }else{
         let its=await itemsCtrl.getList();
         if(its)

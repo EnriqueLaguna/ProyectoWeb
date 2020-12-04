@@ -3,10 +3,11 @@ applications:
   timeout: 180
   name: eld-dme-proyecto
   buildpack: sdk-for-nodejs
-  command: npm start
+  command: node server.js
   disk_quota: 1G
   memory: 128MB
   domain: mybluemix.net
   host: eld-dme-proyecto
   env:
-    OPTIMIZE_MEMORY: true
+    OPTIMIZE_MEMORY: true 
+

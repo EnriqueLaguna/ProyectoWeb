@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
         res.status(400).send("User already exists");
     }else{
         usersCtrl.createUser(b);
-        res.status(200).send();
+        res.status(200).send("User succesfullly created");
     }
 });
 
@@ -31,13 +31,13 @@ router.put('/:email',(req,res)=>{
     if (req.params.email) {
         if(req.body.email){
             usersCtrl.updateUser(req.body);
-            res.status(200).send();
+            res.status(200).send("User succesfully updated");
             return;
         }
     } else {
         res.status(400).send('missing arguments');
     }
-    res.status(401).send('error');
+    res.status(404).send('User not found/error');
 });
 
 router.delete('/:email',async(req,res)=>{

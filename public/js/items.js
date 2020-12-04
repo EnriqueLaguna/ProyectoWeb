@@ -24,25 +24,25 @@ function itemToHTML(item){
     return `
         <ul class="list-unstyled">
             <li class="media my-4">
-            <img src="${item.doc.ItemImage}" class="align-self-center mr-3" alt="...">
+            <img src="${item.ItemImage}" class="align-self-center mr-3" alt="...">
             <div class="media-body">
-                <h4 class="mt-0 mb-1">${item.doc.ItemName}</h4>
+                <h4 class="mt-0 mb-1">${item.ItemName}</h4>
                 <div class="media mt-4">
-                <h5 class="mt-0">${item.doc.Receta?'Receta:':'Sin receta'}</h5>
+                <h5 class="mt-0">${item.Receta?'Receta:':'Sin receta'}</h5>
                 <a class="mr-3" href="#">
-                    <img src="${item.doc.Receta}" style="visibility:${item.doc.Receta?'visible':'hidden'};" class="mr-3" alt="Receta">
+                    <img src="${item.Receta}" style="visibility:${item.Receta?'visible':'hidden'};" class="mr-3" alt="Receta">
                 </a>
-                <h5 class="ml-2" style="visibility:${item.doc.Durabilidad<0?'hidden':'visible'};">Durabilidad: ${item.doc.Durabilidad}</h5>
+                <h5 class="ml-2" style="visibility:${item.Durabilidad<0?'hidden':'visible'};">Durabilidad: ${item.Durabilidad}</h5>
                 <div class="ml-4" style="text-align: right;width: 100%;">
                     <div class="mr-4">
-                    <button type="button" class="btn btn-primary" id="btnActualizar" data-item='${JSON.stringify(item.doc)}' data-toggle="modal" data-target="#updateItemModal"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-primary" id="btnActualizar" data-item='${JSON.stringify(item)}' data-toggle="modal" data-target="#updateItemModal"><i class="fas fa-edit"></i></button>
                     </div>
                     <div class="mr-4 mt-1">
-                    <button type="button" class="btn btn-primary" id="btnBorrar" data-item="${item.doc._id}" data-toggle="modal" data-target="#deleteItem"><i class="fas fa-trash"></i></button>
+                    <button type="button" class="btn btn-primary" id="btnBorrar" data-item="${item._id}" data-toggle="modal" data-target="#deleteItem"><i class="fas fa-trash"></i></button>
                     </div>
                 </div>
                 </div>
-                <p><b>Descipción: </b>${item.doc.Descripcion}</p>
+                <p><b>Descipción: </b>${item.Descripcion}</p>
             </div>
             </li>
         </ul>

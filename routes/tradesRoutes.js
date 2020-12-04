@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
         res.status(400).send("Item already exists");
     }else{
         tradeCtrl.createTrade(b);
-        res.status(200).send();
+        res.status(200).send(b);
     }
 });
 
@@ -34,7 +34,7 @@ router.get('/', async(req, res) => {
         its=its.sort((a,b)=>parseInt(a.Fecha)-parseInt(b.Fecha));
         let tp=parseInt(its.length/req.query.limit)+(its.length%req.query.limit>0?1:0);
         if(its){
-            if(req.query.name)its=its.filter((e,b,c)=>e.doc.NombreItem.toUpperCase().includes(req.query.name.toUpperCase()));
+            if(req.query.name)its=its.filter((e,b,c)=>e.NombreItem.toUpperCase().includes(req.query.name.toUpperCase()));
             res.status(200).send({trades:its.slice(req.query.page*req.query.limit,req.query.page*req.query.limit+req.query.limit),totalPages:tp});
         }else
             res.status(400).send();
@@ -53,9 +53,9 @@ router.put('/',(req,res)=>{
             tradeCtrl.updateTrade(req.body);
             res.status(200).send(req.body);
         }
-        res.status(400).send();
+        res.status(400).send("Missing arguments");
     }else
-        res.status(400).send();
+        res.status(404).send("Missing id");
 })
 
 module.exports = router;
